@@ -1,7 +1,10 @@
 import React from "react";
 import './App.css';
-import {Button} from "reactstrap";
-import {Table} from "reactstrap";
+import {
+    Button,
+    Table
+} from "reactstrap";
+import Example from "./Example";
 
 class App extends React.Component {
     constructor(props) {
@@ -75,7 +78,7 @@ class App extends React.Component {
         });
     }
 
-    updateItem = () => {
+    update = () => {
         let data = this.state.items;
         data.map((item, index) => {
             if (this.state.index === index) {
@@ -91,7 +94,7 @@ class App extends React.Component {
         })
     }
 
-    deleteItem = (name) => this.setState({
+    delete = (name) => this.setState({
         items: this.state.items.filter(item => item.name != name)
     })
 
@@ -142,7 +145,7 @@ class App extends React.Component {
                                         </td>
                                         <td>
                                             <Button color="danger" outline
-                                            onClick={()=>this.deleteItem(item.name)}>
+                                            onClick={()=>this.delete(item.name)}>
                                                 Xoá
                                             </Button>
                                         </td>
@@ -166,12 +169,13 @@ class App extends React.Component {
                         </div>
                         <div className="form-group">
                             <button type="button" className="btn btn-primary"
-                                    onClick={this.state.action == 'THÊM MỚI' ? this.addItem : this.updateItem}>OK
+                                    onClick={this.state.action == 'THÊM MỚI' ? this.addItem : this.update}>OK
                             </button>
                         </div>
 
                     </div>
                 </div>
+                <Example/>
             </div>
         );
     }
